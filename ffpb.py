@@ -136,7 +136,6 @@ class ProgressNotifier(object):
             if self.pbar is None:
                 self.pbar = self.tqdm(
                     desc=self.source,
-                    file=self.file,
                     total=total,
                     dynamic_ncols=True,
                     unit=unit,
