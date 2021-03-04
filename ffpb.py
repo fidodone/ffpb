@@ -48,7 +48,6 @@ class ProgressNotifier(object):
 
     _DURATION_RX = re.compile(b"Duration: (\d{2}):(\d{2}):(\d{2})\.\d{2}")
     _PROGRESS_RX = re.compile(b"time=(\d{2}):(\d{2}):(\d{2})\.\d{2}")
-    _SOURCE_RX = re.compile(b"from '(.*)':")
     _FPS_RX = re.compile(b"(\d{2}\.\d{2}|\d{2}) fps")
 
     @staticmethod
