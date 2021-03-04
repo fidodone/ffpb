@@ -113,12 +113,6 @@ class ProgressNotifier(object):
             return self._seconds(*search.groups())
         return None
 
-    def get_source(self, line):
-        search = self._SOURCE_RX.search(line)
-        if search is not None:
-            return os.path.basename(search.group(1).decode(self.encoding))
-        return None
-
     def progress(self, line):
         search = self._PROGRESS_RX.search(line)
         if search is not None:
