@@ -48,6 +48,7 @@ class ProgressNotifier(object):
 
     _DURATION_RX = re.compile(b"Duration: (\d{2}):(\d{2}):(\d{2})\.\d{2}")
     _PROGRESS_RX = re.compile(b"time=(\d{2}):(\d{2}):(\d{2})\.\d{2}")
+    _SOURCE_RX = re.compile(b"from '(.*)':")
     _FPS_RX = re.compile(b"(\d{2}\.\d{2}|\d{2}) fps")
 
     @staticmethod
@@ -110,6 +111,12 @@ class ProgressNotifier(object):
         search = self._DURATION_RX.search(line)
         if search is not None:
             return self._seconds(*search.groups())
+        return None
+
+    def get_source(self, line):
+        search = self._SOURCE_RX.search(line)
+        if search is not None:
+            return os.path.basename(search.group(1).decode(self.encoding))
         return None
 
     def progress(self, line):
